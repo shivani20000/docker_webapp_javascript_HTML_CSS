@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googlechoices.com/css2?family=Big+Shoulders+Stencil+Text:wght@100&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hadoop.css">
+
+    <title>Docker Menu</title>
+    <link rel="icon" href="download.png" type = "image/x-icon">
+</head>
+
+<body>
+
+<script>
+function dock1() {
+var ch = document.getElementById("in1").value
+var xhr = new XMLHttpRequest();
+// here fasle means sync and true means async[AJAX]
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch, true);
+xhr.send();
+// here  onload will take the return text from server [cgi-bin folder]
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;
+}
+}
+
+function dock2() {
+var ch = document.getElementById("in2").value
+var v1 = document.getElementById("radio").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch + "&state=" + v1 , true);
+xhr.send();   
+xhr.onload = function() {
+       var output = xhr.responseText;
+       document.getElementById("out").innerHTML = output;	
+	   
+}	
+}
+function dock3() {     
+var ch = document.getElementById("in3").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch, true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock4() {     
+var ch = document.getElementById("in4").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch, true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock5() {     
+var ch = document.getElementById("in5").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch, true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock6() {     
+var ch = document.getElementById("in6").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch, true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock7() {     
+var v1 = document.getElementById("pull1").value
+var v2 = document.getElementById("pull2").value
+var ch = document.getElementById("in7").value
+	
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch + "&image=" + v1 + "&tag=" + v2 , true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock8() {     
+var ch = document.getElementById("in8").value
+var v1 = document.getElementById("lc1").value
+var v2 = document.getElementById("lc2").value
+var v3 = document.getElementById("lc3").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch + "&container=" + v1 + "&image=" + v2 + "&tag=" + v3 ,  true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock9() {     
+var ch = document.getElementById("in9").value
+var v1 = document.getElementById("st1").value
+var v2 = document.getElementById("radio").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch + "&container=" + v1 + "&state=" + v2 , true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock10() {     
+var ch = document.getElementById("in10").value
+var v1 = document.getElementById("rmv1").value
+var v2 = document.getElementById("rmv2").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch + "&image=" + v1 + "&tag=" + v2 , true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+function dock11() {     
+var ch = document.getElementById("in11").value
+var v1 = document.getElementById("all1").value
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://192.168.43.203/cgi-bin/dockerapi.py?choice=" + ch + "&container=" + v1 , true);
+xhr.send();
+xhr.onload = function() {
+    var output = xhr.responseText;
+    document.getElementById("out").innerHTML = output;  
+}       
+}
+
+</script>
+
+    <div class="container">
+        <div class="header">
+            <img src="docker.gif" alt="" width="350" height="200">
+            <h2 class="heading">Docker Menu</h2>
+        </div>
+
+        <div class="cards">
+
+            <div class="card" id="card1">
+	        <div class="upper">
+                    <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                        <p> Configure Docker</p>
+                        <input id="in1" type="hidden" name="choice" value="1">
+                        <button onmouseover="dock1()"  type="submit">Start Docker</button>
+                    </form>
+
+                    <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                        <p> Docker Service</p>
+                        <input type="radio" name="state" value="start" class="radio" id="radio">
+                       <label for="start">Start</label>
+                      <input  type="radio" name="state" value="stop" class="radio" id="radio">
+                        <input id="in2" type="hidden" name="choice" value="2">
+                      <label for="stop">Stop</label><br>
+                      <button onmouseover="dock2()" type="submit">Submit</button>
+                    </form>
+                   
+                    <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                        <p>Service Status</p>
+                        <input id="in3" type="hidden" name="choice" value="3">
+                        <button onmouseover="dock3()" type="submit">See Status</button>
+                    </form>
+                </div>
+            </div>
+
+                
+            <div class="card" id="card2">
+		  <div class="upper">	
+                    <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                        <p>List Docker Images</p>
+                        <input id="in4" type="hidden" name="choice" value="4">
+
+                        <button onmouseover="dock4()" type="submit">See list of Images</button>
+                    </form>
+		  </div>
+		  <hr>
+                  <div class="lower">
+                     <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                        <p>List All Container</p>
+                        <input id="in5" type="hidden" name="choice" value="5">
+                        <button onmouseover="dock5()"  type="submit">See All Containers</button>
+                     </form>
+                     <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+
+                        <p>List All Running Containers</p>
+                        <input id="in6"  type="hidden" name="choice" value="6">
+                        <button onmouseover="dock6()" type="submit">Running Containers</button>
+                     </form>
+                  </div>
+            </div>
+
+
+            <div class="card" id="card3">
+                <form action="http://192.168.43.203/cgi-bin/dockerapi.py">
+
+                    <p>Pull Image From Docker Hub</p>
+                    <input id="pull1" type="text" Placeholder="Enter Image Name" name="image" class="input">
+                    <input id="pull2" type="text" Placeholder="Enter Image Tag" name="tag" class="input">
+                    <input id="in7" type="hidden" name="choice" value="7">
+                    <button onmouseover="dock7()" type="submit">Pull Image</button>
+                </form>
+            </div>
+            <div class="card" id="card4">
+                <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                    <p>Launch a new Conatiner</p>
+                    <input id="lc1" type="text" Placeholder=" Container Name" name="container" class="input">
+                    
+                    <input id="lc2" type="text" Placeholder="Image Name" name="image" class="input">
+                    <input id="lc3" type="text" Placeholder="Image Tag" name="tag" class="input">
+                    <input id="in8" type="hidden" name="choice" value="8">
+                    
+                    <button onmouseover="dock8()" type="submit">Launch</button>
+                </form>
+            </div>
+            <div class="card" id="card5">
+                <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                    <p>Start/Stop Conatiner</p>
+                    <input id="st1" type="text" placeholder="Enter the Conatiner Name" name="container" class="input">
+                    
+                    <input id="radio" type="radio" name="state" value="start" class="radio">
+                    
+                    <label for="start">Start</label><br>
+                    <input id="radio" type="radio" name="state" value="stop" class="radio">
+                    <input id="in9" type="hidden" name="choice" value="9">
+                    <label for="stop">Stop</label><br>
+                    <button onmouseover="dock9()" type="submit">Submit</button>
+
+                </form>
+
+
+            </div>
+            <div class="card" id="card6">
+                <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                    <p>Remove an Image or All Images</p>
+                    <input id="rmv1" type="text" Placeholder="Enter name of Image" name="image" class="input"> 
+                    <input id="rmv2" type="text" Placeholder="Enter name of Tag" name="tag" class="input">    
+                    <input id="in10" type="hidden" name="choice" value="10">
+                    <button onmouseover="dock10()" type="submit">Remove Image</button>
+		    
+                </form>
+            </div>
+            <div class="card" id="card7">
+                <form action="http://192.168.43.203/cgi-bin/dockerapi.py" method="POST">
+                <p>Remove a Conatiner or All Containers</p>
+                <input id="all1" type="text" Placeholder="Enter name of Container" name="container" class="input">
+                <input id="in11" type="hidden" name="choice" value="11">
+                <button onmouseover="dock11()" type="submit">Remove Conatiner</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class='op'>
+    <h1>Check Your Output Here.....</h1>
+    </div>
+    <pre>
+    <div class="myDiv" id='out'>
+    </div>
+    </pre>
+ 
+
+
+</body>
+
+</html>
